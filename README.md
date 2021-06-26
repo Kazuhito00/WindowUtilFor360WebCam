@@ -40,6 +40,12 @@ python sample.py
 画像解析によるメニュー自動選択の不使用<br>
 デフォルト：指定なし
 
+# Device
+
+|01：400-CAM084|02：-|
+:---:|:---:
+|<img src="https://user-images.githubusercontent.com/37477845/123508560-21d08f00-d6ab-11eb-8fd2-1bf07358e698.jpg" loading="lazy" width="400px">|<img src="https://user-images.githubusercontent.com/37477845/122628310-5e6f1a00-d0f0-11eb-946c-55d1dc6920ef.png" loading="lazy" width="400px">|
+
 # Author
 高橋かずひと(https://twitter.com/KzhtTkhs)
  
