@@ -44,7 +44,7 @@ python sample.py
 
 |01：400-CAM084|02：-|
 :---:|:---:
-|<img src="https://user-images.githubusercontent.com/37477845/123508560-21d08f00-d6ab-11eb-8fd2-1bf07358e698.jpg" loading="lazy" width="200px">|<img src="https://user-images.githubusercontent.com/37477845/123508681-d074cf80-d6ab-11eb-8357-8e5061ee89b5.png" loading="lazy" width="200px">|
+|<img src="https://user-images.githubusercontent.com/37477845/123508560-21d08f00-d6ab-11eb-8fd2-1bf07358e698.jpg" loading="lazy" width="300px">|<img src="https://user-images.githubusercontent.com/37477845/123508681-d074cf80-d6ab-11eb-8357-8e5061ee89b5.png" loading="lazy" width="300px">|
 
 # Author
 高橋かずひと(https://twitter.com/KzhtTkhs)
