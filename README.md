@@ -1,24 +1,26 @@
 # WindowUtilFor360WebCam
-https://user-images.githubusercontent.com/37477845/123132746-06d30480-d48a-11eb-9902-c27e52878bc5.mp4
+https://user-images.githubusercontent.com/37477845/123508197-de752100-d6a8-11eb-97be-9cb73b982eed.mp4
 
 
-単眼デプス推定で推定した相対距離をシンプルなキャリブレーションで絶対距離へ変換するプログラムです。<br>
-2点以上の実測値から最小二乗法で1次関数へ近似します。<br>
-
-本リポジトリでは単眼デプス推定に[MiDaS v2.1 small](https://github.com/intel-isl/MiDaS)を使用しています。<br>
-ONNXモデルは[PINTO_model_zoo](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/081_MiDaS_v2)のモデルを使用しています。
+サンワダイレクトの[360度Webカメラ(400-CAM084)](https://direct.sanwa.co.jp/ItemPage/400-CAM084)のウィンドウをOpenCVで分割するプログラムです。<br>
+実機での確認は取れていませんが、j5createの[360° パノラマミーティングカメラ(JVCU360)](https://jp.j5create.com/products/model_jvcu360)でも使用できると思います(メニュー自動選択を利用する際は検出色の調整が必要かもしれません)
 
 # Requirement 
 * opencv-python 4.5.2.54 or later
-* onnxruntime 1.5.2 or later
 
 # Usage
-以下コマンドで起動してください。<br>
-画面上でマウス左クリックすることで実測値(cm)の入力用のポップアップが出ます。<br>
-2点以上で実測値を入力するとマウスポインタ上の距離表示が推論値からキャリブレーション値に変わります。<br>
-また、キーボードの「c」を押下することでキャリブレーションの指定をリセットすることが出来ます。
+以下コマンドでサンプルを起動できます。<br>
+デフォルトではカメラ側のモード切替メニューを画像処理で判別して、自動で表示が切り替わるようになっています。<br>
+また、キーボードの数字を押下することでモードを切り替えることが出来ます。<br>
+　0：そのまま表示<br>
+　1：上下2分割360度<br>
+　2：パノラマ360度<br>
+　3：360度+1方向<br>
+　4：360度+2方向<br>
+　5：広角90度<br>
+　6：広角120度<br>
 ```bash
-python main.py
+python sample.py
 ```
 実行時には、以下のオプションが指定可能です。
    
@@ -26,36 +28,20 @@ python main.py
 カメラデバイス番号の指定<br>
 デフォルト：0
 * --width<br>
-カメラキャプチャ時の横幅<br>
-デフォルト：640
-* --height<br>
-カメラキャプチャ時の縦幅<br>
-デフォルト：360
-
-# Memo
-利用するモデルを独自にカスタマイズする際には、main.pyの以下個所を変更してください。
-```
-def model_load():
-    from midas_predictor.midas_predictor import MiDaSPredictor
-
-    model_path = 'midas_predictor/midas_v2_1_small.onnx'
-    model_type = 'small'
-
-    midas_predictor = MiDaSPredictor(model_path, model_type)
-
-    def model_run(image):
-        result = midas_predictor(image)
-        return result
-
-    return model_run
-```
-
-# Reference
-* [MiDaS](https://github.com/intel-isl/MiDaS)
-* [PINTO_model_zoo](https://github.com/PINTO0309/PINTO_model_zoo/tree/main/081_MiDaS_v2)
+カメラキャプチャ時の横幅 ※縦幅はwidth*(9/16)で計算されます<br>
+デフォルト：960
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --webcam_model<br>
+カメラデバイス種類の指定 ※現状、400-CAM084のみ<br>
+デフォルト：400-CAM084
+* --unuse_autochange<br>
+画像解析によるメニュー自動選択の不使用<br>
+デフォルト：指定なし
 
 # Author
 高橋かずひと(https://twitter.com/KzhtTkhs)
  
 # License 
-MonocularDepthEstimator-Simple-Calibration is under [MIT License](LICENSE).
+WindowUtilFor360WebCam is under [Apache-2.0 License](LICENSE).
